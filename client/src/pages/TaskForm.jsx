@@ -1,13 +1,16 @@
 import { Form, Formik } from "formik";
+import FormBotstrap from "react-bootstrap/Form";
 import { useTasks } from "../context/TaskProvider";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import '../css/TaskForm.css'
 
 function TaskForm() {
   const { createTask, getTask, updateTask } = useTasks();
   const [task, setTask] = useState({
-    title: "",
-    description: "",
+    nombre_completo: "",
+    correo: "",
+    contra: "",
   });
   const params = useParams();
   const navigate = useNavigate();
@@ -18,8 +21,9 @@ function TaskForm() {
         const task = await getTask(params.id);
         console.log(task);
         setTask({
-          title: task.title,
-          description: task.description,
+          nombre_completo: task.nombre_completo,
+          correo: task.correo,
+          contra: task.contra,
         });
       }
     };
@@ -27,7 +31,7 @@ function TaskForm() {
   }, []);
 
   return (
-    <div>
+    <div className="container-form-data">
       <Formik
         initialValues={task}
         enableReinitialize={true}
@@ -40,8 +44,9 @@ function TaskForm() {
           }
           navigate("/");
           setTask({
-            title: "",
-            description: "",
+            nombre_completo: "",
+            correo: "",
+            contra: "",
           });
         }}
       >
@@ -51,32 +56,52 @@ function TaskForm() {
             className="bg-slate-300 max-w-sm rounded-md p-4 mx-auto mt-10"
           >
             <h1 className="text-xl font-bold uppercase text-center">
-              {params.id ? "Edit Task" : "New Task"}
+              {params.id ? "Edit Task" : "Nuevo usuario"}
             </h1>
-            <label className="block">title</label>
+
+            <FormBotstrap.Group className="mb-3">
+              {/* <FormBotstrap.Label>nombre</FormBotstrap.Label> */}
+              <label className="block">nombre</label><br />
+              <input
+                type="text"
+                name="nombre_completo"
+                rows="3"
+                placeholder="Escribe tu nombre"
+                onChange={handleChange}
+                className="px-2 py-1 rounded-sm w-full"
+                value={values.nombre_completo}
+              />
+            </FormBotstrap.Group>
+
+            <FormBotstrap.Group className="mb-3">
+              <label className="block">correo</label><br />
+              {/* <FormBotstrap.label>correo</FormBotstrap.label> */}
+              <input
+                type="text"
+                name="correo"
+                rows="3"
+                placeholder="Escribe tu correo"
+                onChange={handleChange}
+                className="px-2 py-1 rounded-sm w-full"
+                value={values.correo}
+              ></input>
+            </FormBotstrap.Group>
+            <FormBotstrap.Group className="mb-3">
+            <label className="block">Contraseña</label><br />
             <input
-              type="text"
-              name="title"
-              placeholder="Write a title"
-              className="px-2 py-1 rounded-sm w-full"
-              onChange={handleChange}
-              value={values.title}
-            />
-
-            <label className="block">description</label>
-            <textarea
-              name="description"
+              type="password"
+              name="contra"
               rows="3"
-              placeholder="Write a description"
+              placeholder="Escribe tu contraseña"
               onChange={handleChange}
               className="px-2 py-1 rounded-sm w-full"
-              value={values.description}
-            ></textarea>
-
+              value={values.contra}
+            ></input>
+            </FormBotstrap.Group>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="block bg-indigo-500 px-2 py-1 text-white w-full rounded-md"
+              className="block bg-indigo-500 px-2 py-1 text-dark w-full rounded-md"
             >
               {isSubmitting ? "Saving..." : "Save"}
             </button>

@@ -1,0 +1,12 @@
+.container-form-data{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.container-form-data,form,input{
+    border-radius: 10px;
+}
+.container-form-data,button{
+    background-color: rgb(144, 144, 151);
+}

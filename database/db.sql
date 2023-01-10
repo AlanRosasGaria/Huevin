@@ -1,8 +1,10 @@
--- table tasks
-CREATE TABLE tasks (
-    id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(200) NOT NULL,
-    description VARCHAR(300),
-    done BOOLEAN NOT NULL DEFAULT 0,
-    createAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+create database tutoriales;
+
+use tutoriales;
+
+create table usuarios(
+id INT PRIMARY KEY AUTO_INCREMENT,
+nombre_completo VARCHAR(100) NOT NULL,
+correo VARCHAR(50) NOT NULL,
+contra VARCHAR(50) NOT NULL
 );

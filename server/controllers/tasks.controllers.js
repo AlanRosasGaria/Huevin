@@ -3,7 +3,7 @@ import { pool } from "../db.js";
 export const getTasks = async (req, res) => {
   try {
     const [result] = await pool.query(
-      "SELECT * FROM tasks ORDER BY createAt ASC"
+      "SELECT * FROM usuarios ORDER BY createAt ASC"
     );
     res.json(result);
   } catch (error) {
@@ -13,7 +13,7 @@ export const getTasks = async (req, res) => {
 
 export const getTask = async (req, res) => {
   try {
-    const [result] = await pool.query("SELECT * FROM tasks WHERE id = ?", [
+    const [result] = await pool.query("SELECT * FROM usuarios WHERE id = ?", [
       req.params.id,
     ]);
 
@@ -28,15 +28,16 @@ export const getTask = async (req, res) => {
 
 export const createTask = async (req, res) => {
   try {
-    const { title, description } = req.body;
+    const {nombre_completo, correo, contra } = req.body;
     const [result] = await pool.query(
-      "INSERT INTO tasks(title, description) VALUES (?, ?)",
-      [title, description]
+      "INSERT INTO usuarios(nombre_completo, correo, contra) VALUES (?, ?, ?)",
+      [nombre_completo, correo, contra]
     );
     res.json({
       id: result.insertId,
-      title,
-      description,
+      nombre_completo,
+      correo,
+      contra,
     });
   } catch (error) {
     return res.status(500).json({ message: error.message });
@@ -45,7 +46,7 @@ export const createTask = async (req, res) => {
 
 export const updateTask = async (req, res) => {
   try {
-    const result = await pool.query("UPDATE tasks SET ? WHERE id = ?", [
+    const result = await pool.query("UPDATE usuarios SET ? WHERE id = ?", [
       req.body,
       req.params.id,
     ]);
@@ -57,7 +58,7 @@ export const updateTask = async (req, res) => {
 
 export const deleteTask = async (req, res) => {
   try {
-    const [result] = await pool.query("DELETE FROM tasks WHERE id = ?", [
+    const [result] = await pool.query("DELETE FROM usuarios WHERE id = ?", [
       req.params.id,
     ]);
 
