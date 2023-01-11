@@ -1,9 +1,8 @@
 import React from "react";
-import '../css/Javascript.css'
 
 function Javascript() {
     return (
-        <div className="container_information_javascript">
+        <div className="gradient__text">
             <h1>JavaScript</h1>
             <p>JavaScript (JS) es un lenguaje de programación ligero, interpretado, o compilado
                 <a href="https://es.wikipedia.org/wiki/Compilaci%C3%B3n_en_tiempo_de_ejecuci%C3%B3n">justo-a-tiempo</a>

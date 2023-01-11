@@ -1,20 +1,19 @@
-import React from "react";
-import Slider from "../components/Slider.jsx"
-import Helmet from "../components/Helmet.jsx";
-import Section from "../components/Section.jsx";
-import Information_home_page from "../components/Information_home_page.jsx";
-function Home(){
-    return(
-    <Helmet title="inicio">
-        <Section>
-            <Slider/>
-        </Section>
-        <section>
-            <Information_home_page/>
-        </section>
-        
-    </Helmet>
-    );
-}
+import React from 'react';
 
-export default Home;
+import {  Possibility, Features, WhatGPT3, Header } from '../containers';
+import {  Brand } from '../components';
+import '../css/App.css';
+
+const App = () => (
+  <div className="App">
+    <div className="gradient__bg">
+      <Header />
+    </div>
+    <Brand />
+    <WhatGPT3 />
+    <Features />
+    <Possibility />
+  </div>
+);
+
+export default App;

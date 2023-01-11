@@ -22,8 +22,8 @@ function NavScrollExample() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="new">HTML5</Nav.Link>
-            <Nav.Link href="#action2">CSS3</Nav.Link>
+            <Nav.Link href="html">HTML5</Nav.Link>
+            <Nav.Link href="css">CSS3</Nav.Link>
             <Nav.Link href="js">JavaScript</Nav.Link>
             <Nav.Link href="information">Información</Nav.Link>
           </Nav>
